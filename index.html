@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo Page for Universal Speech Enhancement</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .center {
+            text-align: center;
+        }
+        .flex-container {
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .flex-item {
+            flex: 1;
+            margin: 10px;
+            max-width: 30%;
+        }
+        .flex-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .flex-item audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 class="center">Demo Page for Universal Speech Enhancement</h1>
+
+    <h2 class="center">Introduction</h2>
+    <p class="center">Universal speech enhancement is the task of enhancing speech signals that have been recorded in various conditions and distortions, such as noise, reverberation, clipping, EQ distortion, packet loss, codecs loss, bandwidth loss and other distortions.</p>
+
+    <h2 class="center">Samples</h2>
+
+    <h3 class="center">1. Bandwidth limitation and Codec Distortion</h3>
+
+    <div class="flex-container">
+        <div class="flex-item">
+            <p>Original</p>
+            <img src="images/bwe_codecs_original.png" alt="Original">
+            <audio controls>
+                <source src="audio/bwe_codecs_original.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="flex-item">
+            <p>GAN Enhanced</p>
+            <img src="images/bwe_codecs_GAN.png" alt="GAN Enhanced">
+            <audio controls>
+                <source src="audio/bwe_codecs_GAN.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+        <div class="flex-item">
+            <p>Storm Enhanced</p>
+            <img src="images/bwe_codecs_Storm.png" alt="Storm Enhanced">
+            <audio controls>
+                <source src="audio/bwe_codecs_Storm.wav" type="audio/wav">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
+    </div>
+
+</body>
+</html>
