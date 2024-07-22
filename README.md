@@ -13,7 +13,7 @@ Universal speech enhancement is the task of enhancing speech signals that have b
         <h3>Original</h3>
         <img src="images/bwe_codecs_original.png" alt="Original" style="width: 100%; height: auto;">
         <audio controls>
-            <source src="audio/bwe_codecs_original.wav" type="audio/wave">
+            <source src="audio/bwe_codecs_original.wav" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -21,7 +21,7 @@ Universal speech enhancement is the task of enhancing speech signals that have b
         <h3>GAN Enhanced</h3>
         <img src="images/bwe_codecs_GAN.png" alt="GAN Enhanced" style="width: 100%; height: auto;">
         <audio controls>
-            <source src="audio/bwe_codecs_GAN.wav" type="audio/wave">
+            <source src="audio/bwe_codecs_GAN.wav" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
     </div>
@@ -29,7 +29,7 @@ Universal speech enhancement is the task of enhancing speech signals that have b
         <h3>Storm Enhanced</h3>
         <img src="images/bwe_codecs_Storm.png" alt="Storm Enhanced" style="width: 100%; height: auto;">
         <audio controls>
-            <source src="audio/bwe_codecs_Storm.mp3" type="audio/wave">
+            <source src="audio/bwe_codecs_Storm.mp3" type="audio/wav">
             Your browser does not support the audio element.
         </audio>
     </div>
