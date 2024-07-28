@@ -7,20 +7,53 @@
     <style>
         body {
             font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            font-size: 15px;
+        }
+        .container {
+            width: 95%;
+            margin: auto;
+            overflow: hidden;
+            padding-bottom: 40px; /* Adjust the padding to prevent footer overlap */
+        }
+        header {
+            background: #333;
+            color: #fff;
+            padding-top: 20px;
+            min-height: 60px;
+            border-bottom: #77aaff 3px solid;
+        }
+        header h1 {
+            text-align: center;
+            text-transform: uppercase;
+            margin: 0;
+            font-size: 20px;
         }
         .center {
             text-align: center;
+            margin: 15px 0;
+        }
+        .left {
+            font-size: 1.2em;
+            line-height: 1.4;
         }
         .flex-container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             text-align: center;
-            margin: 20px 0;
+            margin: 15px 0;
         }
         .flex-item {
             flex: 1;
-            margin: 10px;
-            max-width: 30%;
+            margin: 3px;
+            max-width: 280px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 5px;
         }
         .flex-item img {
             width: 100%;
@@ -31,45 +64,564 @@
             width: 100%;
             margin-top: 10px;
         }
+        .flex-item a.download {
+            display: block;
+            margin-top: 10px;
+            padding: 8px;
+            background: #77aaff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .flex-item a.download:hover {
+            background: #0056b3;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        a {
+            color: #77aaff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .toc {
+            margin: 15px 0;
+        }
+        .toc ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .toc li {
+            margin: 3px 0;
+        }
     </style>
 </head>
 <body>
 
-    <h1 class="center">Demo Page for Universal Speech Enhancement</h1>
-
-    <h2 class="center">Introduction</h2>
-    <p class="center">Universal speech enhancement is the task of enhancing speech signals that have been recorded in various conditions and distortions, such as noise, reverberation, clipping, EQ distortion, packet loss, codecs loss, bandwidth loss and other distortions.</p>
-
-    <h2 class="center">Samples</h2>
-
-    <h3 class="center">1. Bandwidth limitation and Codec Distortion</h3>
-
-    <div class="flex-container">
-        <div class="flex-item">
-            <p>Original</p>
-            <img src="images/bwe_codecs_original.png" alt="Original">
-            <audio controls>
-                <source src="audio/bwe_codecs_original.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="flex-item">
-            <p>GAN Enhanced</p>
-            <img src="images/bwe_codecs_GAN.png" alt="GAN Enhanced">
-            <audio controls>
-                <source src="audio/bwe_codecs_GAN.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
-        <div class="flex-item">
-            <p>Storm Enhanced</p>
-            <img src="images/bwe_codecs_Storm.png" alt="Storm Enhanced">
-            <audio controls>
-                <source src="audio/bwe_codecs_Storm.wav" type="audio/wav">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+<header>
+    <div class="container">
+        <h1>Demo Page for Universal Speech Enhancement</h1>
     </div>
+</header>
+
+<div class="container">
+    <nav class="toc">
+        <h2>Table of Contents</h2>
+        <ul>
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#tasks">Tasks and Samples</a></li>
+            <ul>
+                <li><a href="#hybrid">1. Hybrid Distortion Compensation</a></li>
+                <li><a href="#noise">2. Noise Suppression</a></li>
+                <li><a href="#dereverberation">3. Dereverberation</a></li>
+                <li><a href="#declipping">4. Declipping</a></li>
+                <li><a href="#packet">5. Packet Loss Compensation</a></li>
+                <li><a href="#bandwidth">6. Bandwidth Extension</a></li>
+                <li><a href="#equalization">7. Equalization Compensation</a></li>
+                <li><a href="#quality">8. Sound Quality Enhancement</a></li>
+            </ul>
+        </ul>
+    </nav>
+    
+    <section id="introduction">
+        <h2 class="center">Introduction</h2>
+        <p class="left">Universal speech enhancement aims to improve speech signals recorded under various adverse conditions and distortions, including noise, reverberation, clipping, equalization (EQ) distortion, packet loss, codec loss, bandwidth limitations, and other forms of degradation. A comprehensive universal speech enhancement system integrates multiple techniques such as noise suppression, dereverberation, equalization, packet loss concealment, bandwidth extension, declipping, and other enhancement methods to produce speech signals that closely approximate studio-quality audio.</p>
+        <p class="left">In this demonstration, I have employed several advanced speech enhancement techniques, including GAN-based and score diffusion-based methods, to enhance speech signals degraded by various types of distortions. The primary objective of this demo is to illustrate the effectiveness of these diverse speech enhancement techniques across different types of audio distortions. Most of the samples are drawn from <a href="https://github.com/microsoft/SIG-Challenge/tree/main/ICASSP2024/blind_data" target="_blank">microsoft SIG-Challenge blind data set</a>.</p>
+    </section>
+
+    <section id="tasks">
+        <h2 class="center">Tasks and Samples</h2>
+
+        <h3 id="hybrid" class="center">1. Hybrid Distortion Compensation</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_1_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_1_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/hybrid/hybrid_1_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_1_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_2_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_2_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_2_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_2_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_2_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_2_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/hybrid/hybrid_2_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_2_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_2_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_2_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_2_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_2_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_3_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_3_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_3_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_3_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_3_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_3_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/hybrid/hybrid_3_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_3_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_3_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_3_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_3_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_3_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_4_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_4_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_4_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_4_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_4_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_4_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/hybrid/hybrid_4_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_4_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_4_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_4_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_4_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_4_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_5_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_5_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_5_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_5_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_5_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_5_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/hybrid/hybrid_5_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_5_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_5_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/hybrid/hybrid_5_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_5_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_5_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="noise" class="center">2. Noise Suppression</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/ns/ns_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/ns/ns_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/ns/ns_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/ns/ns_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/ns/ns_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/ns/ns_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/ns/ns_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/ns/ns_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/ns/ns_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/ns/ns_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/ns/ns_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/ns/ns_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="dereverberation" class="center">3. Dereverberation</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/drb/drb_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/drb/drb_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/drb/drb_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/drb/drb_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/drb/drb_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/drb/drb_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/drb/drb_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/drb/drb_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/drb/drb_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/drb/drb_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/drb/drb_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/drb/drb_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="declipping" class="center">4. Declipping</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/declip/declip_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/declip/declip_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/declip/declip_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/declip/declip_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/declip/declip_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/declip/declip_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/declip/declip_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/declip/declip_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="packet" class="center">5. Packet Loss Compensation</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/plc/plc_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/plc/plc_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/plc/plc_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/plc/plc_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/plc/plc_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/plc/plc_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/plc/plc_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/plc/plc_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/plc/plc_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/plc/plc_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/plc/plc_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/plc/plc_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="bandwidth" class="center">6. Bandwidth Extension</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/bwe/bwe_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/bwe/bwe_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/bwe/bwe_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/bwe/bwe_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/bwe/bwe_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/bwe/bwe_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/bwe/bwe_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/bwe/bwe_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/bwe/bwe_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/bwe/bwe_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/bwe/bwe_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/bwe/bwe_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="equalization" class="center">7. Equalization Compensation</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/eqc/eqc_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/eqc/eqc_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/eqc/eqc_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/eqc/eqc_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/eqc/eqc_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/eqc/eqc_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/eqc/eqc_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/eqc/eqc_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <h3 id="quality" class="center">8. Sound Quality Enhancement</h3>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/sqe/sqe_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/sqe/sqe_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>GAN Enhanced</p>
+                <img src="images/sqe/sqe_GAN.png" alt="GAN Enhanced">
+                <audio controls>
+                    <source src="audio/sqe/sqe_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_GAN.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE Enhanced</p>
+                <img src="images/sqe/sqe_SGMSE.png" alt="SGMSE Enhanced">
+                <audio controls>
+                    <source src="audio/sqe/sqe_SGMSE.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_SGMSE.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN Enhanced</p>
+                <img src="images/sqe/sqe_SGMSE_GAN.png" alt="SGMSE + GAN Enhanced">
+                <audio controls>
+                    <source src="audio/sqe/sqe_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<footer>
+    <p>&copy; 2024 Universal Speech Enhancement Demo</p>
+</footer>
 
 </body>
 </html>
