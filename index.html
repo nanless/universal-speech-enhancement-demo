@@ -102,6 +102,11 @@
         .toc li {
             margin: 3px 0;
         }
+        .comparison {
+            margin: 0 auto;
+            width: 80%;
+            font-size: 18px;
+        }
     </style>
 </head>
 <body>
@@ -120,14 +125,15 @@
             <li><a href="#tasks">Tasks and Samples</a></li>
             <ul>
                 <li><a href="#hybrid">1. Hybrid Distortion Compensation</a></li>
-                <li><a href="#noise">2. Noise Suppression</a></li>
-                <li><a href="#dereverberation">3. Dereverberation</a></li>
-                <li><a href="#declipping">4. Declipping</a></li>
-                <li><a href="#packet">5. Packet Loss Compensation</a></li>
-                <li><a href="#bandwidth">6. Bandwidth Extension</a></li>
-                <li><a href="#equalization">7. Equalization Compensation</a></li>
-                <li><a href="#quality">8. Sound Quality Enhancement</a></li>
+                <li><a href="#quality">2. Sound Quality Enhancement</a></li>
+                <li><a href="#equalization">3. Equalization Compensation</a></li>
+                <li><a href="#noise">4. Noise Suppression</a></li>
+                <li><a href="#dereverberation">5. Dereverberation</a></li>
+                <li><a href="#declipping">6. Declipping</a></li>
+                <li><a href="#packet">7. Packet Loss Compensation</a></li>
+                <li><a href="#bandwidth">8. Bandwidth Extension</a></li>
             </ul>
+            <li><a href="#comparisons">Comparisons</a></li>
         </ul>
     </nav>
     
@@ -578,7 +584,169 @@
         </div>
 
     </section>
+
+    <section id="comparisons">
+        <h2 class="center">Comparisons</h2>
+            <p class="center comparison">Comparison of the enhanced results of different open-source speech restoration and enhancement methods: Voice Fixer and Resemble Enhance. As illustrated, the enhanced results of SGMSE + GAN are much better than that of Voice Fixer, and Resemble Enhance is close to SGMSE + GAN.</p>
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/declip/declip_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/declip/declip_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Voice Fixer</p>
+                <img src="images/declip/declip_voicefixer.png" alt="VoiceFixer">
+                <audio controls>
+                    <source src="audio/declip/declip_voicefixer.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_voicefixer.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Resemble Enhance</p>
+                <img src="images/declip/declip_resemble_enhance.png" alt="Resemble Enhance">
+                <audio controls>
+                    <source src="audio/declip/declip_resemble_enhance.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_resemble_enhance.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN</p>
+                <img src="images/declip/declip_SGMSE_GAN.png" alt="SGMSE + GAN">
+                <audio controls>
+                    <source src="audio/declip/declip_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/declip/declip_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/eqc/eqc_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/eqc/eqc_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Voice Fixer</p>
+                <img src="images/eqc/eqc_voicefixer.png" alt="VoiceFixer">
+                <audio controls>
+                    <source src="audio/eqc/eqc_voicefixer.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_voicefixer.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Resemble Enhance</p>
+                <img src="images/eqc/eqc_resemble_enhance.png" alt="Resemble Enhance">
+                <audio controls>
+                    <source src="audio/eqc/eqc_resemble_enhance.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_resemble_enhance.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN</p>
+                <img src="images/eqc/eqc_SGMSE_GAN.png" alt="SGMSE + GAN">
+                <audio controls>
+                    <source src="audio/eqc/eqc_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/eqc/eqc_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/sqe/sqe_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/sqe/sqe_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Voice Fixer</p>
+                <img src="images/sqe/sqe_voicefixer.png" alt="VoiceFixer">
+                <audio controls>
+                    <source src="audio/sqe/sqe_voicefixer.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_voicefixer.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Resemble Enhance</p>
+                <img src="images/sqe/sqe_resemble_enhance.png" alt="Resemble Enhance">
+                <audio controls>
+                    <source src="audio/sqe/sqe_resemble_enhance.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_resemble_enhance.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN</p>
+                <img src="images/sqe/sqe_SGMSE_GAN.png" alt="SGMSE + GAN">
+                <audio controls>
+                    <source src="audio/sqe/sqe_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/sqe/sqe_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+
+        <div class="flex-container">
+            <div class="flex-item">
+                <p>Original</p>
+                <img src="images/hybrid/hybrid_1_original.png" alt="Original">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_original.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_original.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Voice Fixer</p>
+                <img src="images/hybrid/hybrid_1_voicefixer.png" alt="VoiceFixer">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_voicefixer.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_voicefixer.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>Resemble Enhance</p>
+                <img src="images/hybrid/hybrid_1_resemble_enhance.png" alt="Resemble Enhance">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_resemble_enhance.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_resemble_enhance.wav" download>Download</a>
+            </div>
+            <div class="flex-item">
+                <p>SGMSE + GAN</p>
+                <img src="images/hybrid/hybrid_1_SGMSE_GAN.png" alt="SGMSE + GAN">
+                <audio controls>
+                    <source src="audio/hybrid/hybrid_1_SGMSE_GAN.wav" type="audio/wav">
+                    Your browser does not support the audio element.
+                </audio>
+                <a class="download" href="audio/hybrid/hybrid_1_SGMSE_GAN.wav" download>Download</a>
+            </div>
+        </div>
+    </section>
+
 </div>
+    
 
 <footer>
     <p>&copy; 2024 Universal Speech Enhancement Demo</p>
